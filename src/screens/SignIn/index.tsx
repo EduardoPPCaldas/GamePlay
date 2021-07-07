@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   View,
@@ -12,20 +13,20 @@ import { style } from './style';
 
 
 export function SignIn() {
+  const navigation = useNavigation()
+
+  function handleSignIn(){
+    navigation.navigate('Home')
+  }  
 
   return (
     <View style={style.container}>
-      <StatusBar 
-        barStyle = 'light-content'
-        backgroundColor = "transparent"
-        translucent
-      />
       <Image source= {IllustrationImg} style={style.image} resizeMode="stretch" />
       <View style={style.content}>
         <Text style={style.title}>
-          Organize {"\n"}
-          suas jogatinas {"\n"}
-           facilmente
+          Conecte-se {"\n"}
+          e organize suas {"\n"}
+          jogatinas
         </Text>
 
         <Text style={style.subtitle}>
@@ -33,7 +34,10 @@ export function SignIn() {
           com seus amigos
         </Text>
 
-        <ButtonIcon title={"Entrar com Discord"} activeOpacity={0.7}/>
+        <ButtonIcon 
+          title={"Entrar com Discord"}
+          onPress = {handleSignIn}
+        />
       </View>
     </View>
   )
