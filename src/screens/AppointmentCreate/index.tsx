@@ -31,51 +31,10 @@ export function AppointmentCreate() {
   return (
     <Background>
       <Header
-        title="Detalhes"
-        action={
-          <BorderlessButton>
-            <Fontisto
-              name='share'
-              size={24}
-              color={theme.colors.primary}
-            />
-          </BorderlessButton>
-        }
+        title="Agendar Partida"
+        
       />
-      <ImageBackground
-        source={BannerImg}
-        style={style.banner}
-      >
-        <View style={style.bannerContent}>
-          <Text style={style.title}>
-            Lendários
-          </Text>
-          <Text style={style.subtitle}>
-            É hoje que vamos chegar ao challenger sem perder nenhuma partida da md10
-          </Text>
 
-        </View>
-      </ImageBackground>
-      <ListHeader
-        title = "Jogadores"
-        subtitle = "Total 3"
-      />
-      <FlatList
-        data = {members}
-        keyExtractor = {item => item.id}
-        renderItem = {({item}) => (
-          <Member data={item}/>
-        )}
-        ItemSeparatorComponent={
-          () => (
-            <ListDivider/>
-          )
-        }
-        style = {style.members}
-     />
-      <View style={style.footer}>
-        <ButtonIcon title={"Entrar na Partida"}/>
-      </View>
     </Background>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   View,
   FlatList,
+  Button,
 } from 'react-native'
 import { ButtonAdd } from "../../components/ButtonAdd";
 import { CategorySelect } from "../../components/CategorySelect";
@@ -19,6 +20,7 @@ export function Home() {
   const [category, setCategory] = useState('')
 
   const navigation = useNavigation()
+
 
   const appointments = [
     {
@@ -63,7 +65,7 @@ export function Home() {
       <View>
         <View style={style.header}>
           <Profile />
-          <ButtonAdd onPress={handleAppointmentCreate}/>
+          <ButtonAdd onPress={handleAppointmentCreate} />
         </View>
         <CategorySelect
           categorySelected={category}
