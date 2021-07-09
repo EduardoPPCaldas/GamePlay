@@ -10,35 +10,39 @@ import {
 import IllustrationImg from '../../assets/illustration.png'
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { style } from './style';
+import { Background } from "../../components/Background";
+
 
 
 export function SignIn() {
   const navigation = useNavigation()
 
-  function handleSignIn(){
+  function handleSignIn() {
     navigation.navigate('Home')
-  }  
+  }
 
   return (
-    <View style={style.container}>
-      <Image source= {IllustrationImg} style={style.image} resizeMode="stretch" />
-      <View style={style.content}>
-        <Text style={style.title}>
-          Conecte-se {"\n"}
-          e organize suas {"\n"}
-          jogatinas
-        </Text>
+    <Background>
+      <View style={style.container}>
+        <Image source={IllustrationImg} style={style.image} resizeMode="stretch" />
+        <View style={style.content}>
+          <Text style={style.title}>
+            Conecte-se {"\n"}
+            e organize suas {"\n"}
+            jogatinas
+          </Text>
 
-        <Text style={style.subtitle}>
-          Crie grupos para jogar seus games {"\n"}
-          com seus amigos
-        </Text>
+          <Text style={style.subtitle}>
+            Crie grupos para jogar seus games {"\n"}
+            com seus amigos
+          </Text>
 
-        <ButtonIcon 
-          title={"Entrar com Discord"}
-          onPress = {handleSignIn}
-        />
+          <ButtonIcon
+            title={"Entrar com Discord"}
+            onPress={handleSignIn}
+          />
+        </View>
       </View>
-    </View>
+    </Background>
   )
 }
