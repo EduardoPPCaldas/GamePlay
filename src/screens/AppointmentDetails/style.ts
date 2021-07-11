@@ -15,7 +15,6 @@ export const style = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     paddingHorizontal: 24,
-    marginBottom: 30
   },
   title:{
     fontSize: 28,
