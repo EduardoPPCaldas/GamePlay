@@ -29,9 +29,10 @@ export const style = StyleSheet.create({
   image:{
     width: 64,
     height: 68,
-    backgroundColor: theme.colors.secondary50,
+    backgroundColor: theme.colors.secondary40,
     borderWidth: 1,
     borderRadius: 8,
+    borderColor: theme.colors.secondary50,
   },
   selectBody:{
     flex: 1,
@@ -45,7 +46,7 @@ export const style = StyleSheet.create({
   },
   column:{
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   divider:{
     marginRight: 4,
