@@ -64,7 +64,7 @@ export function AppointmentCreate() {
 
               <View style={style.select}>
                 {
-                  guild.icon ? <GuildIcon /> : <View style={style.image} />
+                  guild.icon ? <GuildIcon guildId={guild.id} iconId={guild.icon} /> : <View style={style.image} />
                 }
 
                 <View style={style.selectBody}>
