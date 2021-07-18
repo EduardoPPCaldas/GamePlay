@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, Text, View, FlatList, Alert } from "react-native";
+import { ImageBackground, Text, View, FlatList, Alert , Share , Platform} from "react-native";
 import { BorderlessButton } from "react-native-gesture-handler";
 import { Fontisto } from "@expo/vector-icons";
 import { Background } from "../../components/Background";
@@ -16,6 +16,7 @@ import { AppointmentProps } from "../../components/Appointment";
 import { api } from "../../services/api";
 import { useEffect, useState } from "react";
 import { Load } from "../../components/Load";
+import * as Linking from 'expo-linking'
 
 type Params = {
   guildSelected: AppointmentProps
@@ -23,9 +24,8 @@ type Params = {
 type GuildWidget = {
   id: string
   name: string
-  istant_invite: string
+  instant_invite: string
   members: MemberProps[]
-  presence_count: number
 }
 
 export function AppointmentDetails() {
@@ -46,6 +46,16 @@ export function AppointmentDetails() {
       setLoading(false)
     }
   }
+  function handleShareInvitation(){
+    const message = Platform.OS === 'ios' ? `Junte-se a ${guildSelected.guild.name}` : widget.instant_invite
+    Share.share({
+      message,
+      url: widget.instant_invite
+    })
+  }
+  function handleOpenGuild(){
+    Linking.openURL(widget.instant_invite)
+  }
 
   useEffect(() => {
     fetchGuildWidget()
@@ -56,7 +66,8 @@ export function AppointmentDetails() {
       <Header
         title="Detalhes"
         action={
-          <BorderlessButton>
+          guildSelected.guild.owner &&
+          <BorderlessButton onPress={handleShareInvitation}>
             <Fontisto
               name='share'
               size={24}
@@ -101,9 +112,12 @@ export function AppointmentDetails() {
           />
         </>
       }
-      <View style={style.footer}>
-        <ButtonIcon title={"Entrar na Partida"} />
-      </View>
+      {
+        guildSelected.guild.owner &&
+        <View style={style.footer}>
+          <ButtonIcon title={"Entrar na Partida"} onPress={handleOpenGuild}/>
+        </View>
+      }
     </Background>
   )
 }
